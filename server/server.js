@@ -16,9 +16,6 @@ var server = http.createServer(app);
 // Initialisation du websocket
 var io = ioLib.listen(server);
 
-// Initialisation des users 
-var users = [];
-
 // Traitement des requêtes HTTP (une seule route pour l'instant = racine)
 app.get('/', function(req, res)
 {
@@ -36,8 +33,6 @@ io.sockets.on('connection', function(socket)
 	{
 		// Stocke le nom de l'utilisateur dans l'objet socket
 		socket.name = name;
-		
-		
 	});
 	
 	// Réception d'un message
